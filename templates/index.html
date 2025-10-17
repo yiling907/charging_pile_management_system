@@ -1,0 +1,10 @@
+<h1>Newest equipment<h1>
+{% if newest_eq %}
+<ul>
+{% for equipment in newest_eq %}
+<li><a href="/newest_eq/{{ equipment.id }}/">{{ equipment.name }}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<p>There are no equipment recorded.</p>
+{% endif %}
