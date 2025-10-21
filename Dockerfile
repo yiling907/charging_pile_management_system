@@ -7,6 +7,7 @@
 # Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
 
 ARG PYTHON_VERSION=3.9.6
+
 FROM python:${PYTHON_VERSION}-slim as base
 
 # Keeps Python from buffering stdout and stderr to avoid situations where
@@ -35,6 +36,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 # Copy the source code into the container.
 COPY . .
+
 
 # Expose the port that the application listens on.
 EXPOSE 8080

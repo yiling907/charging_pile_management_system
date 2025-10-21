@@ -18,7 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from drf_yasg import openapi #new foe swagger
 from drf_yasg.views import get_schema_view as swagger_get_schema_view #new foe swagger
-from django.urls import path, include
+from django.urls import path, include,re_path
+# 导入对应包
+from django.conf import settings
+from django.views import static
+
 
 schema_view = swagger_get_schema_view(
     openapi.Info(
@@ -30,6 +34,8 @@ schema_view = swagger_get_schema_view(
 )
 
 urlpatterns = [
+    re_path(r'^static/(?P<path>.*)$', static.serve,
+         {'document_root': settings.STATIC_ROOT},name='static'),
     path("", include('apps.equipment_management.urls')),
     path("admin/", admin.site.urls),
     path('swagger/schema/', schema_view.with_ui('swagger', cache_timeout=0), name="swagger-schema"),
