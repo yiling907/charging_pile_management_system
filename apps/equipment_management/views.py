@@ -5,4 +5,4 @@ from .models import Equipment
 def index(request):
     newest_eq = Equipment.objects.order_by('-create_date')[:15]
     context = {'newest_eq': newest_eq}
-    return render(request, 'templates/index.html', context)
+    return render(request, 'index.html', context)
